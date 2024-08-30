@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var wakeUp = Date.now
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        DatePicker("Please enter the date", selection: $wakeUp, in: Date.now...)
+            .labelsHidden()
+    }
+    
+    func exampleDates() {
+        let tomorrow = Date.now.addingTimeInterval(84600)
+        let range = Date.now...tomorrow
     }
 }
 
