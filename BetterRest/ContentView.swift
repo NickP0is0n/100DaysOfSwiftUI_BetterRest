@@ -8,16 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var wakeUp = Date.now
-    
     var body: some View {
-        DatePicker("Please enter the date", selection: $wakeUp, in: Date.now...)
-            .labelsHidden()
+        VStack {
+            Text(Date.now, format: .dateTime.day().month().year())
+            Text(Date.now.formatted(date: .long, time: .shortened))
+        }
+        
     }
     
     func exampleDates() {
-        let tomorrow = Date.now.addingTimeInterval(84600)
-        let range = Date.now...tomorrow
+        // var components = DateComponents()
+        // components.hour = 8
+        // components.minute = 0
+        // let date = Calendar.current.date(from: components) ?? .now
+        
+        let components = Calendar.current.dateComponents([.day, .hour], from: .now)
+        let hour = components.hour ?? 0
+        let minute = components.minute ?? 0
     }
 }
 
